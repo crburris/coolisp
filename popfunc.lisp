@@ -14,8 +14,8 @@
 
 (defun rescale-range (x old-min old-max new-min new-max)
   (+ new-min (rescale (- x old-min)
-		      (- old-max old-min)
-		      (- new-max new-min))))
+                      (- old-max old-min)
+                      (- new-max new-min))))
 
 (defun iterate (f x times)
   (do ((y x (funcall f x))
@@ -28,7 +28,7 @@
 
 (defun draw-iterates (r x pens)
   (let ((f (population-function r))
-	(y 0.5))
+        (y 0.5))
     (dotimes (step (length pens))
       (setf y (funcall f y))
       (sk:with-pen (aref pens step)
@@ -46,7 +46,7 @@
     (sk:background sk:+white+)
     (dotimes (x 640)
       (let ((r (rescale-range x 0 640 2.0 4.0)))
-	(draw-iterates r x pens)))))
+        (draw-iterates r x pens)))))
 
 (defun main ()
   (make-instance 'popfunc-sketch :height 480 :width 640))
